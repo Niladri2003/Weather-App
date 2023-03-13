@@ -19,6 +19,7 @@ function switchTab(newTab){
         oldTab.classList.add("current-tab");
 
         if(!searchForm.classList.contains("active")){
+
             userInfoContainer.classList.remove("active");
             grantAcces.classList.remove("active");
             searchForm.classList.add("active");
@@ -37,10 +38,10 @@ function switchTab(newTab){
 userTab.addEventListener("click",()=>{
     //pass clicked tab as parameter
     switchTab(userTab);
-})
+});
 searchTab.addEventListener("click",()=>{
     switchTab(searchTab);
-})
+});
 
 //check if cordinates are already present in session storage
 function getfromSessionStorage(){
@@ -62,7 +63,7 @@ async function fetchUserWeatherInfo(coordinates){
     loading.classList.add("active");
     //Api Call
     try{
-        const res=await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+        const res=await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
         const data=await res.json();
         loading.classList.remove("active");
         userInfoContainer.classList.add("active");
@@ -91,10 +92,10 @@ cityName.innerText= weatherInfo?.name;
 countryIcon.src=`https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`
 desc.innerText=weatherInfo?.weather?.[0]?.description;
 weatherIcon.src=`http://openweathermap.org/img/w/${weatherInfo?.weather?.[0].icon}.png`;
-temp.innerText=weatherInfo?.main?.temp;
-windSpeed.innerText=weatherInfo?.wind?.speed;
-humidity.innerText=weatherInfo?.main?.humidity;
-cloudiness.innerText=weatherInfo?.clouds?.all;
+temp.innerText=`${weatherInfo?.main?.temp} °C`;
+windSpeed.innerText=`${weatherInfo?.wind?.speed} m/s`;
+humidity.innerText=`${weatherInfo?.main?.humidity}%`;
+cloudiness.innerText=`${weatherInfo?.clouds?.all}%`;
 }
 function getlocation(){
     if(navigator.geolocation){
@@ -139,7 +140,7 @@ async function fetchSearchWeatherInfo(city){
         const response=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
         const data=await response.json();
         loading.classList.remove("active");
-        userContainer.classList.add("active");
+        userInfoContainer.classList.add("active");
         
         renderWeatherInfo(data);
 

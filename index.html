@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
   </head>
@@ -17,7 +23,7 @@
 
       <div class="weather-container">
         <!--Grant Location container-->
-        <div class="grant-location-container">
+        <div class="sub-container grant-location-container">
           <img
             src="./assets/location.png"
             alt="location logo"
@@ -26,7 +32,7 @@
             height="80"
             loading="lazy"
           />
-          <p>Grant location access</p>
+          <p>Grant location Access</p>
           <p>Allow access to get weather information</p>
           <button class="btn" data-grantAcces>Grant access</button>
         </div>
@@ -47,7 +53,7 @@
         </form>
 
         <!--Loading screen container-->
-        <div class="loading-container">
+        <div class="sub-container loading-container">
           <img
             src="./assets/loading.gif"
             alt=""
@@ -59,7 +65,7 @@
         </div>
 
         <!--Weather information UI-->
-        <div class="user-info-container">
+        <div class="sub-container user-info-container">
           <!--City name and flag-->
           <div class="name">
             <p data-cityName></p>
@@ -84,12 +90,12 @@
               <img src="./assets/humidity.png" alt="" />
               <p>Humidity</p>
               <p data-humudity></p>
-              <!--card 3-->
-              <div class="parameter">
-                <img src="./assets/cloud.png" alt="" srcset="" />
-                <p>Clouds</p>
-                <p data-cloudiness></p>
-              </div>
+            </div>
+            <!--card 3-->
+            <div class="parameter">
+              <img src="./assets/cloud.png" alt="" srcset="" />
+              <p>Clouds</p>
+              <p data-cloudiness></p>
             </div>
           </div>
         </div>
